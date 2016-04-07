@@ -1,3 +1,3 @@
-# pocky
+# my playground
 
-一個用來自己玩的道場。
+基本上就是倉庫。
