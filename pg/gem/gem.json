@@ -1,0 +1,57 @@
+[
+	{
+		"name": "Ruby",
+		"price":2.95,
+		"description": "this is a ruby.",
+		"canPurchase": true,
+		"soldOut":false,
+		"reviews":[
+			{
+				"stars":5,
+				"author": "Trina",
+				"body": "blablabla..."	
+			},
+			{
+				"stars":5,
+				"author": "Chu",
+				"body": "blablabla..."	
+			}
+		]
+	},{
+		"name": "Chu",
+		"price":99999999,
+		"description": "this is a my favorite one so i can't sell you.",
+		"canPurchase": false,
+		"soldOut":false,
+		"reviews":[
+			{
+				"stars":5,
+				"author": "Trina",
+				"body": "blablabla..."	
+			},
+			{
+				"stars":5,
+				"author": "Chu",
+				"body": "blablabla..."	
+			}
+		]
+	},{
+		"name": "Diamond Dogs",
+		"price":3,
+		"description": "this is not even a gem!!!",
+		"canPurchase": false,
+		"soldOut":false,
+		"reviews":[
+			{
+				"stars":5,
+				"author": "Trina",
+				"body": "blablabla..."	
+			},
+			{
+				"stars":5,
+				"author": "Chu",
+				"body": "blablabla..."	
+			}
+		]
+	}
+]
