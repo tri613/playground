@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Range Picker</title>
+	<link rel=stylesheet href="bootstrap-3.3.5/dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+</head>
+
+<body style="padding: 10px;">
+
+<style type="text/css">
+  .well{position: relative;}
+  .line{
+    position: relative;
+    height: 1px;
+    background-color: #000;
+    z-index: 1;
+  }
+  .tick{
+    /*height: 20px;*/
+    /*background-color: blueviolet;*/
+    /*width: 1px;*/
+    position: absolute;
+    top: -10px;
+    left: 0;
+    z-index: 2;
+  }
+  .tick:before {
+    content: "";
+    height: 20px;
+    width: 1px;
+    background-color: red;
+    position: absolute;
+  }
+  .tick:nth-child(2){
+    left: 25%;
+  }
+  .tick:nth-child(3){
+    left: 50%;
+  }
+  .tick:nth-child(4){
+    left: 75%;
+  }
+  .tick:nth-child(5){
+    left: 100%;
+  }
+  .marker{
+    border-radius: 50%;
+    padding: 6px;
+    /*position: absolute;*/
+    top: -10px;
+    left: -6px;
+    z-index: 2;
+    opacity: 0.8;
+
+    position: relative;
+  }
+</style>
+
+<input type="text" style="width: 180px;" class="range form-control" placeholder="Pick a range!">
+<div class="well">
+    <div class="line">
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        <div class="tick"></div>
+        
+        <div class="btn btn-warning marker"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+  
+  var $wrap = $('.well'),
+      $window = $(window),
+      $marker = $('.marker');
+
+  var radius = 6;
+  var offset = 30 + radius;
+  var max = $('.line').width();
+
+  $marker.on('mousedown',function(e){
+
+    var pos;
+    var move_marker = function(e){
+      pos = e.clientX - offset;
+      if(pos > max-radius) {pos = max-radius;}
+
+      $marker.css('left',pos);
+    }
+
+    $window.on('mousemove',function(e){
+        move_marker(e);
+    });
+
+    $window.on('mouseup',function(e){
+        $window.off('mousemove');
+    });
+  });
+
+  $wrap.on('click',function(e){
+      var pos = e.clientX - offset;
+      if(pos > max-radius) {pos = max-radius;}
+      $marker.css('left',pos);
+      console.log(get_percentage(pos,max));
+  });
+
+//   $('.well').on('mousedown','.marker', function(event){
+//     var mark = $('.marker');
+//     $('.well').on('mousemove', function(moveEvent){
+//       var newX = moveEvent.offsetX;
+//       var newY = moveEvent.offsetY;
+
+//       mark.css('left', newX - 20);
+//     });
+
+//     var well = $('.well');
+//     console.log(well);
+//     well.on('mouseup', function(upEvent){
+//       mark.css('left', upEvent.offsetX - 20);
+//       $(this).off('mousemove');
+//     });
+//   });
+});
+
+
+
+
+function get_percentage(value,max){
+  // console.log(value+6,max);
+  return ((value+6) / max).toFixed(2) ;
+}
+
+</script>
+
+
+
+</body>
+</html>
