@@ -82,6 +82,12 @@ $(function(){
   var radius = 6;
   var offset = 30 + radius;
   var max = $('.line').width();
+  
+  $window.on('resize',function(e){
+    //replace the marker by percentage
+    //and resize max width
+    max = $('.line').width();
+  });
 
   $marker.on('mousedown',function(e){
 
